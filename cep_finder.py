@@ -21,9 +21,8 @@ def cep_finder(address, number, city, uf):
         url = "http://www.buscacep.correios.com.br/sistemas/buscacep/resultadoBuscaCep.cfm"
         response = requests.post(url, data=data)
         doc = BeautifulSoup(response.text, 'html.parser')
-        tags = doc.find_all('td')
-        cep_tag = str(tags[3]) # Get third <td> tag, where the CEP is located
-        cep = cep_tag[15:24] # Get the CEP through slicing
+        tags = doc.find_all('td') # Finds all 'td' tags
+        cep = tags[3].text # Extract text of the third tag, where the CEP is located
         if cep[5] == '-': # Error handler
             return cep
         else:
