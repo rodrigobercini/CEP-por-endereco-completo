@@ -1,6 +1,6 @@
 Find a english version of this README file [here](https://github.com/rodrigobercinimartins/CEP-por-endereco/blob/master/EN_README.md).
 
-## Encontrando CEP a partir do endereço
+## Encontrando CEP a partir de endereços completos
 
 ```
 "CEP é a sigla de Código de Endereçamento Postal, criado e utilizado pelos Correios para facilitar o encaminhamento
