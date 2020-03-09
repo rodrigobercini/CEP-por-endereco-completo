@@ -33,7 +33,9 @@ Correto: cep_finder("av protasio alves", "17", "porto alegre", "RS')
 
 ## Exemplo:
 
+```
 cep_finder('avenida protasio alves', '1889', 'Porto Alegre', 'RS')
+```
 
 Retorna:
 ```
