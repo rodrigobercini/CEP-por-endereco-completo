@@ -1,22 +1,27 @@
+from unicodedata import normalize
 from bs4 import BeautifulSoup
 import requests
+
 
 ################################################
 #####
 # Retorna CEPs a partir de endereços completos do site Oficial dos Correios
 # Após 300~ CEPs, a extração é bloqueada temporariamente
-# Caracteres especiais não são suportados
-# Examplo: cep_finder('Av Protasio Alves', '199', 'RS', 'Porto Alegre')
+# Exemplo: cep_finder('Av Protásio Alves', '199', 'RS', 'Porto Alegre')
 #####
 ################################################
+
+# Função para remover caracteres especiais
+def rm_diacritics(string):
+    return normalize('NFKD', string).encode('ASCII', 'ignore').decode('ASCII')
 
 def cep_finder(address, number, city, uf):     
     try:     
         data = {
             'UF': uf,
-            'Localidade': city,
+            'Localidade': rm_diacritics(city),
             'Tipo': '',
-            'Logradouro': address,
+            'Logradouro': rm_diacritics(address),
             'Numero': number
         }
         url = "http://www.buscacep.correios.com.br/sistemas/buscacep/resultadoBuscaCep.cfm"
@@ -56,7 +61,6 @@ def cep_finder_mapacep(address,number,city,uf):
         cep = docx_string[(lens-21):(lens-12)] # Extrai o CEP através de slicing reverso
         if cep[5] == '-': # Gerenciando Erros
             return cep
-        elif:
         else:
             return 'Erro'
     except:

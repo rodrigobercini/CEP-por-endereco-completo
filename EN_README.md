@@ -8,29 +8,36 @@ Brazilian postal code system commonly known as CEP.
 
 There are several services and libraries that can get an address by providing a CEP number. This repository works the other way around, the input is a complete address and the matching CEP number is the output.
 
+## How to use
 
-# Libraries needed
-``` 
-pip install beautifulsoup4
-pip install requests
+The package can be installed via pip:
+
+```
+pip install CEP-por-endereco-completo
 ```
 
-# How to use
+The function takes address, number, city and uf (state abbreviation) as arguments.
 
 ```
 cep_finder(address, number, city, uf)
 ```
-Special characters are not supported, so instead of "avenida protásio alves", the input should be "avenida protasio alves".
-
-The function takes address, number, city and uf (state abbreviation) as arguments.
 
 ## Example:
 
 Input:
-
+```
+from CEP_por_endereco.cep_finder import cep_finder
 cep_finder('avenida protasio alves', '1889', 'Porto Alegre', 'RS')
+```
 
 Output:
 ```
 '90450-190'
+```
+
+## Libraries used
+``` 
+beautifulsoup4
+requests
+unicodedata
 ```
