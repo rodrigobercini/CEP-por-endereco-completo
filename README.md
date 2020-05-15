@@ -43,3 +43,5 @@ beautifulsoup4
 requests
 unicodedata
 ```
+
+https://pypi.org/project/CEP-por-endereco-completo/
