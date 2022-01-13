@@ -1,4 +1,4 @@
-# Finding a CEP (brazilian zip code) of a complete address
+# Finding the CEP (brazilian zip code) of a complete address
 
 ```
 Código de Endereçamento Postal (Postal Addressing Code) is the
