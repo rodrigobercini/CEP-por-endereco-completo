@@ -1,47 +1,43 @@
-Find an english version of this README file [here](https://github.com/rodrigobercinimartins/CEP-por-endereco/blob/master/EN_README.md).
-
-## Encontrando CEP a partir do endereço completo com número do logradouro
+# Finding a CEP (brazilian zip code) of a complete address
 
 ```
-"CEP é a sigla de Código de Endereçamento Postal, criado e utilizado pelos Correios para facilitar o encaminhamento
-e a entrega das correspondências aos destinatários. O CEP é uma informação indispensável na correspondência,
-pois identifica todos os detalhes do endereço."
+Código de Endereçamento Postal (Postal Addressing Code) is the
+Brazilian postal code system commonly known as CEP.
+```
+[WikiPedia](https://en.wikipedia.org/wiki/C%C3%B3digo_de_Endere%C3%A7amento_Postal)
+
+There are several services and libraries that can get an address by providing a CEP number. This repository works the other way around, the input is a complete address and the matching CEP number is the output.
+
+## Correios official website endpoint is not available anymore
+
+When I first wrote this piece of code, the Correios website allowed to search for a CEP using its complete address. This is not possible anymore as you can see on this page (the original endpoint):
+
+http://www.buscacep.correios.com.br/sistemas/buscacep/resultadoBuscaCep.cfm
+
+I'm currently using the Mapacep website for the requests.
+
+https://www.mapacep.com.br/
+
+## Running an example
+
+1) Clone the repository:
 
 ```
-[Significados](https://www.significados.com.br/cep/)
-
-Há diversos serviços e repositórios que retornam um determinado endereço a partir do CEP. Este pacote faz o caminho contrário: encontra CEPs a partir de endereços completos.
-
-## Como usar
-
-Para instalar basta usar o pip:
-
-```
-pip install CEP-por-endereco-completo
+git clone https://github.com/rodrigobercini/CEP-por-endereco-completo.git
 ```
 
-A função toma endereço, número, cidade e UF como argumentos.
+2) Install the requirements via pip:
 
 ```
-cep_finder(address, number, city, uf)
-```
-## Exemplo:
-
-```
-from CEP_por_endereco.cep_finder import cep_finder
-cep_finder('avenida protasio alves', '1889', 'Porto Alegre', 'RS')
+pip install -r requirements.txt
 ```
 
-Retorna:
+3) Run the example file:
+
 ```
-'90450-190'
+python example.py
 ```
 
-## Bibliotecas utilizadas
-``` 
-beautifulsoup4
-requests
-unicodedata
-```
+## Package in PyPI 
 
-https://pypi.org/project/CEP-por-endereco-completo/
+The package currently available in PyPI is outdaded. I haven't created a CI/CD pipeline when I first uploaded the library and I don't have time to update the files there. Also, I've made some structural changes to the methods and I don't want to break people's projects (even though I highly doubt there is someone using this library).
